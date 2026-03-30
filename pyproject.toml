@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "regression-diagnostics"
+version = "0.1.0"
+description = "OLS regression diagnostics — assumption checks, VIF, Cook's distance, and plain-language interpretation"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [{ name = "Kostas Kazakos" }]
+keywords = ["regression", "statistics", "diagnostics", "ux-research", "cli"]
+dependencies = ["click>=8.0", "numpy>=1.24", "scipy>=1.10", "pandas>=1.5", "rich>=13.0"]
+
+[project.optional-dependencies]
+openai = ["openai>=1.0"]
+anthropic = ["anthropic>=0.20"]
+gemini = ["google-generativeai>=0.5"]
+all = ["openai>=1.0", "anthropic>=0.20", "google-generativeai>=0.5"]
+dev = ["pytest>=7.0", "ruff>=0.4"]
+
+[project.scripts]
+regression-diagnostics = "regression_diagnostics.cli:cli"
+
+[project.urls]
+Repository = "https://github.com/kgkazakos/regression-diagnostics"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["regression_diagnostics*"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
