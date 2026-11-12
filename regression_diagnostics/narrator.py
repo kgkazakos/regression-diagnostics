@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 DEFAULT_MODELS = {
     "openai": "gpt-4o-mini",
     "anthropic": "claude-haiku-4-5-20251001",
-    "gemini": "gemini-3.1-pro-preview",
+    "gemini": "gemini-4-argon",
 }
 
 SYSTEM_PROMPT = """You are a senior quantitative researcher who specialises in regression analysis for behavioural and product data.
